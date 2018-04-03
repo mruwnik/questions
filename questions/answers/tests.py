@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from answers.models import Question, Category
+from answers.models import Question, Category, Answer, Source
 
 
 class QuestionViewTests(TestCase):
@@ -107,6 +107,9 @@ class CategoryViewTests(TestCase):
         # add a category for a different question
         Category(question=self.other_question, title='sub cat').save()
 
+        answer = Answer(title='asd', content='ase')
+        answer.save()
+
         response = self.client.get(reverse('categories', args=[self.question.id]))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
@@ -133,12 +136,77 @@ class CategoryViewTests(TestCase):
         # add a category for a different question
         Category(question=self.other_question, title='sub cat').save()
 
+        # add a random answer
+        answer = Answer(title='asd', content='ase')
+        answer.save()
+        parent.answers.add(answer)
+
         response = self.client.get(reverse('category', args=[self.question.id, parent.id]))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
             'question': 1,
             'parent': parent.parent_id,
             'title': 'parent cat',
-            'answers': [],
+            'answers': [{'id': 1, 'title': 'asd'}],
             'categories': [{'id': 2, 'title': 'cat 1'}, {'id': 3, 'title': 'cat 2'}, {'id': 4, 'title': 'cat 3'}]
+        })
+
+
+class AnswerViewTests(TestCase):
+
+    def test_no_answer(self):
+        """Check that an empty list is returned when no questions are available."""
+        response = self.client.get(reverse('answer', args=[123]))
+        self.assertEqual(response.status_code, 404)
+
+    def test_answer(self):
+        answer = Answer(title='bla', content='bleee')
+        answer.save()
+
+        response = self.client.get(reverse('answer', args=[answer.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {
+            "title": 'bla', 'answer': 'bleee', 'id': answer.id, 'categories': [], 'sources': []
+        })
+
+    def test_categories(self):
+        """Check if categories get returned correctly."""
+        answer = Answer(title='bla', content='bleee')
+        answer.save()
+
+        question = Question(content='asd')
+        question.save()
+        for i in range(3):
+            c = Category(title='cat %s' % i, question=question)
+            c.save()
+            answer.categories.add(c)
+
+        response = self.client.get(reverse('answer', args=[answer.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {
+            "title": 'bla', 'answer': 'bleee', 'id': answer.id, 'sources': [], 'categories': [
+                {'id': 1, 'title': 'cat 0'},
+                {'id': 2, 'title': 'cat 1'},
+                {'id': 3, 'title': 'cat 2'},
+            ]
+        })
+
+    def test_source(self):
+        """Check if sources get returned correctly."""
+        answer = Answer(title='bla', content='bleee')
+        answer.save()
+
+        for i in range(3):
+            s = Source(name='source %s' % i, url='http://bla.%s.com' % i)
+            s.save()
+            answer.sources.add(s)
+
+        response = self.client.get(reverse('answer', args=[answer.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {
+            "title": 'bla', 'answer': 'bleee', 'id': answer.id, 'categories': [], 'sources': [
+                {'id': 1, 'name': 'source 0', 'url': 'http://bla.0.com'},
+                {'id': 2, 'name': 'source 1', 'url': 'http://bla.1.com'},
+                {'id': 3, 'name': 'source 2', 'url': 'http://bla.2.com'},
+            ]
         })

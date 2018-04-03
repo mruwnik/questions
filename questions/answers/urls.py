@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from answers.views import questions, category, categories
+from answers.views import questions, category, categories, answer
 
 urlpatterns = [
     path('all', questions, name='questions_list'),
@@ -24,4 +24,6 @@ urlpatterns = [
 
     path('<int:question_id>/', categories, name='categories'),
     path('<int:question_id>/category/<int:parent>', category, name='category'),
+
+    path('answer/<int:answer_id>', answer, name='answer'),
 ]

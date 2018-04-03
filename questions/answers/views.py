@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, Http404
 
-from answers.models import Question, Category
+
+from answers.models import Question, Category, Answer
 
 
 def get_or_404(model, pk_id):
@@ -45,5 +46,17 @@ def category(request, question_id, parent):
     category = get_or_404(Category, parent)
     return format_categories(
         question, category.title, list(category.category_set.values('id', 'title')), category.parent_id,
-        list(category.answers.values())
+        list(category.answers.values('id', 'title'))
     )
+
+
+def answer(request, answer_id):
+    """Get an answer."""
+    answer = get_or_404(Answer, answer_id)
+    return JsonResponse({
+        'id': answer_id,
+        'title': answer.title,
+        'answer': answer.content,
+        'categories': list(answer.categories.values('id', 'title')),
+        'sources': list(answer.sources.values()),
+    })
