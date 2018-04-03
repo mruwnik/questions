@@ -20,15 +20,30 @@ def questions(request, search=None):
     return JsonResponse({'questions': list(questions.values())})
 
 
-def categories(request, question, parent=None):
-    """Get a list of categories for a given question/category pair."""
-    get_or_404(Question, question)
-
-    if parent:
-        get_or_404(Category, parent)
-
+def format_categories(question, title, sub_cats, parent_id=None, answers=None):
     return JsonResponse({
-        'question': question,
-        'parent': parent,
-        'categories': list(Category.objects.filter(question__id=question, parent__id=parent).values())
+        'question': question.id,
+        'title': title,
+        'parent': parent_id,
+        'categories': sub_cats,
+        'answers': answers or [],
     })
+
+
+def categories(request, question_id):
+    """Get a list of categories for a given question."""
+    question = get_or_404(Question, question_id)
+    return format_categories(
+        question, question.content,
+        list(Category.objects.filter(question__id=question_id, parent__id=None).values('id', 'title'))
+    )
+
+
+def category(request, question_id, parent):
+    """Get a list of categories for a given question/category pair."""
+    question = get_or_404(Question, question_id)
+    category = get_or_404(Category, parent)
+    return format_categories(
+        question, category.title, list(category.category_set.values('id', 'title')), category.parent_id,
+        list(category.answers.values())
+    )

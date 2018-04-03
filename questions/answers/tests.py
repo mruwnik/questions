@@ -62,13 +62,18 @@ class CategoryViewTests(TestCase):
 
         response = self.client.get(reverse('categories', args=[self.question.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'question': 1, 'parent': None, 'categories': []})
+        self.assertEqual(response.json(), {
+            'question': 1, 'parent': None, 'categories': [], 'title': self.question.content, 'answers': []
+        })
 
         cat = Category(title='asd', question=self.question)
         cat.save()
-        response = self.client.get(reverse('categories', args=[self.question.id, cat.id]))
+        response = self.client.get(reverse('category', args=[self.question.id, cat.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'question': 1, 'parent': cat.id, 'categories': []})
+        self.assertEqual(
+            response.json(),
+            {'question': 1, 'parent': cat.parent_id, 'categories': [], 'title': cat.title, 'answers': []}
+        )
 
     def test_id_validation(self):
         """Check whether ids get correctly validated."""
@@ -77,7 +82,7 @@ class CategoryViewTests(TestCase):
         cat.save()
 
         # check that an non existant parent category raises a 404
-        response = self.client.get(reverse('categories', args=[self.question.id, 123]))
+        response = self.client.get(reverse('category', args=[self.question.id, 123]))
         self.assertEqual(response.status_code, 404)
 
         # check that a non existant question raises a 404
@@ -85,7 +90,7 @@ class CategoryViewTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
         # check that a non existant question raises a 404 even when a valid parent is provided
-        response = self.client.get(reverse('categories', args=[124, cat.id]))
+        response = self.client.get(reverse('category', args=[124, cat.id]))
         self.assertEqual(response.status_code, 404)
 
     def test_get_cat_no_parent(self):
@@ -104,11 +109,13 @@ class CategoryViewTests(TestCase):
 
         response = self.client.get(reverse('categories', args=[self.question.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'question': 1, 'parent': None, 'categories': [
-            {'id': 1, 'question_id': self.question.id, 'parent_id': None, 'title': 'cat 1'},
-            {'id': 2, 'question_id': self.question.id, 'parent_id': None, 'title': 'cat 2'},
-            {'id': 3, 'question_id': self.question.id, 'parent_id': None, 'title': 'cat 3'},
-        ]})
+        self.assertEqual(response.json(), {
+            'question': 1,
+            'parent': None,
+            'title': self.question.content,
+            'answers': [],
+            'categories': [{'id': 1, 'title': 'cat 1'}, {'id': 2, 'title': 'cat 2'}, {'id': 3, 'title': 'cat 3'}]
+        })
 
     def test_get_cat_parent(self):
         """Check if getting categories when providing the parent works,"""
@@ -116,7 +123,7 @@ class CategoryViewTests(TestCase):
         self.other_question.save()
 
         # add a sub category - this should be ignored
-        parent = Category(question=self.question, title='sub cat')
+        parent = Category(question=self.question, title='parent cat')
         parent.save()
 
         for cat in ['cat 1', 'cat 2', 'cat 3']:
@@ -126,10 +133,12 @@ class CategoryViewTests(TestCase):
         # add a category for a different question
         Category(question=self.other_question, title='sub cat').save()
 
-        response = self.client.get(reverse('categories', args=[self.question.id, parent.id]))
+        response = self.client.get(reverse('category', args=[self.question.id, parent.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'question': 1, 'parent': parent.id, 'categories': [
-            {'id': 2, 'question_id': self.question.id, 'parent_id': parent.id, 'title': 'cat 1'},
-            {'id': 3, 'question_id': self.question.id, 'parent_id': parent.id, 'title': 'cat 2'},
-            {'id': 4, 'question_id': self.question.id, 'parent_id': parent.id, 'title': 'cat 3'},
-        ]})
+        self.assertEqual(response.json(), {
+            'question': 1,
+            'parent': parent.parent_id,
+            'title': 'parent cat',
+            'answers': [],
+            'categories': [{'id': 2, 'title': 'cat 1'}, {'id': 3, 'title': 'cat 2'}, {'id': 4, 'title': 'cat 3'}]
+        })
