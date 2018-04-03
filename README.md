@@ -27,3 +27,16 @@ To run locally at http://127.0.0.1:8000/
 To run tests:
 
     python questions/manage.py runserver
+
+
+# Sample data
+
+Import the example data:
+
+    python manage.py loaddata example.json
+
+To play about with it, go to http://127.0.0.1:8000/
+Use the following:
+
+     user: admin
+     password: adminPassword

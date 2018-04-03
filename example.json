@@ -1,0 +1,842 @@
+[
+{
+  "model": "answers.question",
+  "pk": 1,
+  "fields": {
+    "content": "How high is a chinaman"
+  }
+},
+{
+  "model": "answers.question",
+  "pk": 2,
+  "fields": {
+    "content": "How old is the world"
+  }
+},
+{
+  "model": "answers.question",
+  "pk": 3,
+  "fields": {
+    "content": "What am I doing"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 1,
+  "fields": {
+    "question": 1,
+    "parent": 5,
+    "title": "Mathematics"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 2,
+  "fields": {
+    "question": 1,
+    "parent": 4,
+    "title": "Common sense"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 3,
+  "fields": {
+    "question": 1,
+    "parent": 4,
+    "title": "logic"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 4,
+  "fields": {
+    "question": 1,
+    "parent": null,
+    "title": "philosophy"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 5,
+  "fields": {
+    "question": 1,
+    "parent": null,
+    "title": "science"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 6,
+  "fields": {
+    "question": 1,
+    "parent": 5,
+    "title": "biology"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 7,
+  "fields": {
+    "question": 2,
+    "parent": null,
+    "title": "science"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 8,
+  "fields": {
+    "question": 2,
+    "parent": 7,
+    "title": "geology"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 9,
+  "fields": {
+    "question": 2,
+    "parent": 10,
+    "title": "Jo"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 10,
+  "fields": {
+    "question": 2,
+    "parent": null,
+    "title": "philosophy"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 11,
+  "fields": {
+    "question": 3,
+    "parent": null,
+    "title": "philosophy"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 12,
+  "fields": {
+    "question": 3,
+    "parent": 11,
+    "title": "western"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 13,
+  "fields": {
+    "question": 3,
+    "parent": 11,
+    "title": "eastern"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 14,
+  "fields": {
+    "question": 3,
+    "parent": null,
+    "title": "science"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 15,
+  "fields": {
+    "question": 3,
+    "parent": 14,
+    "title": "technology"
+  }
+},
+{
+  "model": "answers.category",
+  "pk": 16,
+  "fields": {
+    "question": 3,
+    "parent": 15,
+    "title": "CS"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "answers",
+    "model": "answer"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "answers",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "answers",
+    "model": "question"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "answers",
+    "model": "source"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "0m99ptljcgsrgm9hibqsw619y7g4ruwv",
+  "fields": {
+    "session_data": "YmFhZWE3N2IzNDRmNGJkNjI5Y2RiNWJiMDUxNWE3OTMzNzYzNmEwOTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjNTI1NzhjY2NiZGQ1YzE1NGFkYzhhMWNjMzUyOGMzNTM0YzQzZjRlIn0=",
+    "expire_date": "2018-04-17T19:11:29.917Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add answer",
+    "content_type": 1,
+    "codename": "add_answer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change answer",
+    "content_type": 1,
+    "codename": "change_answer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete answer",
+    "content_type": 1,
+    "codename": "delete_answer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can add category",
+    "content_type": 2,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can change category",
+    "content_type": 2,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can delete category",
+    "content_type": 2,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can add question",
+    "content_type": 3,
+    "codename": "add_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can change question",
+    "content_type": 3,
+    "codename": "change_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can delete question",
+    "content_type": 3,
+    "codename": "delete_question"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can add source",
+    "content_type": 4,
+    "codename": "add_source"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can change source",
+    "content_type": 4,
+    "codename": "change_source"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can delete source",
+    "content_type": 4,
+    "codename": "delete_source"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 5,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 5,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 5,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 6,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 6,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 6,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 7,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 7,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 7,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 8,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 8,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 8,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 9,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 9,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 9,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 10,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 10,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 10,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$hUTQYFGnDxcs$6GecVnsbmL2wF9Baj5nP0SkptLwtuHMYgLJzG3dkuKk=",
+    "last_login": "2018-04-03T19:11:29.914Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@bla.bla",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-04-03T19:11:24.050Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2018-04-03T19:11:40.168Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "How high is a chinaman",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2018-04-03T19:11:42.432Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "How old is the world",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2018-04-03T19:11:44.776Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "3",
+    "object_repr": "What am I doing",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2018-04-03T19:11:56.607Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "Mathematics (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2018-04-03T19:12:07.236Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "2",
+    "object_repr": "Common sense (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2018-04-03T19:12:17.680Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "logic (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2018-04-03T19:12:26.701Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "4",
+    "object_repr": "philosophy (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2018-04-03T19:12:38.348Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "5",
+    "object_repr": "science (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2018-04-03T19:12:48.178Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "6",
+    "object_repr": "biology (How high is a chinaman)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2018-04-03T19:12:55.768Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "7",
+    "object_repr": "science (How old is the world)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2018-04-03T19:13:05.614Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "8",
+    "object_repr": "geology (How old is the world)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2018-04-03T19:13:17.373Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "9",
+    "object_repr": "Jo (How old is the world)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2018-04-03T19:13:36.868Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "10",
+    "object_repr": "philosophy (How old is the world)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2018-04-03T19:13:48.813Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "11",
+    "object_repr": "philosophy (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2018-04-03T19:14:05.297Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "12",
+    "object_repr": "western (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2018-04-03T19:14:14.317Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "13",
+    "object_repr": "eastern (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2018-04-03T19:14:32.696Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "14",
+    "object_repr": "science (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2018-04-03T19:14:44.271Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "15",
+    "object_repr": "technology (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2018-04-03T19:14:54.070Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "16",
+    "object_repr": "CS (What am I doing)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2018-04-03T19:21:40.317Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "9",
+    "object_repr": "Jo (How old is the world: philosophy)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"parent\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2018-04-03T19:22:06.270Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "logic (How high is a chinaman: philosophy)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"parent\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2018-04-03T19:22:14.961Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "2",
+    "object_repr": "Common sense (How high is a chinaman: philosophy)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"parent\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2018-04-03T19:22:26.453Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "Mathematics (How high is a chinaman: science)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"parent\"]}}]"
+  }
+}
+]

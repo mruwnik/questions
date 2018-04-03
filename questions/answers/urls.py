@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from answers.views import questions
+from answers.views import questions, categories
 
 urlpatterns = [
-    path('', questions, name='questions_list'),
-    path('<search>/', questions, name='questions_list'),
+    path('all', questions, name='questions_list'),
+    path('filter/<search>/', questions, name='questions_filter'),
+
+    path('<int:question>/categories/', categories, name='categories'),
+    path('<int:question>/categories/<int:parent>', categories, name='categories'),
 ]
