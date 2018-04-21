@@ -5,7 +5,7 @@ import {selectItem, showAnswer} from './actions'
 
 function Item({item, onClick}) {
     return (
-        <div className={item.class} id={item.id} onClick={ onClick } >
+        <div className="item-box {item.class}" id={item.id} onClick={ onClick } >
             {item.title}
         </div>
     );
@@ -13,9 +13,9 @@ function Item({item, onClick}) {
 
 
 function ItemGrid({question, items, loading, onItemClick}) {
-    let loadingClass = loading ? "" : "loading";
+    let className = "items-container " + (loading ? "" : "loading");
     return (
-        <div className="items-container {loadingClass}">
+        <div className={className}>
             {items.map((item) => (
                 <Item key={item.id}
                       item={item}

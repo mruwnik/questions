@@ -1,0 +1,33 @@
+/* the questions list */
+.sidebar {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+    border-right: 2px solid red;
+}
+
+.question.selected {
+    background-color: yellow;
+}
+
+/* answers */
+.items-container {
+    margin-left: 260px; /* Same as the width of the sidenav */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.item-box {
+    background-color: #2196F3;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}

@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import {QUESTION_ENDPOINT, selectQuestion, fetchQuestions} from './actions'
 
 
-function Question({question, onClick}) {
+function Question({question, selected, onClick}) {
+    let className = "question " + (selected ? 'selected' : '');
+
     return (
         <li id={question.id}
-            className="question"
+            className={className}
             onClick={ onClick } >
             {question.content}
         </li>
@@ -16,7 +18,8 @@ function Question({question, onClick}) {
 
 const mapStateToProps = state => {
     return {
-        questions: state.entities.questions
+        questions: state.entities.questions,
+        chosen: state.question
     }
 }
 
@@ -37,13 +40,18 @@ class Questions extends React.Component  {
     }
 
     render() {
-        console.log(this.props);
         return (
-            <ul className="questions-list">
-                {this.props.questions.map((question) => (
-                    <Question key={question.id} question={question} onClick={() => this.props.onQuestionClick(question.id)} />
-                ))}
-            </ul>
+           <div className="sidebar">
+                <ul className="questions-list">
+                    {this.props.questions.map((question) => (
+                        <Question key={question.id}
+                                  question={question}
+                                  selected={question.id == this.props.chosen}
+                                  onClick={() => this.props.onQuestionClick(question.id)}
+                        />
+                    ))}
+                </ul>
+           </div>
         );
     }
 }
