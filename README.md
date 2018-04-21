@@ -5,6 +5,8 @@ to make that easier.
 
 # Setup
 
+## Backend
+
 Make a virtualenv for django:
 
     mkvirtualenv questions
@@ -15,7 +17,14 @@ then install all requirements:
 
 And run all migrations
 
-    python questions/manage.py migrate
+    cd questions
+    python manage.py migrate
+
+## Frontend
+
+Make sure you have node.js installed
+
+    sudo apt intstall npm
 
 
 # Testing
@@ -33,7 +42,7 @@ To run tests:
 
 Import the example data:
 
-    python manage.py loaddata example.json
+    python questions/manage.py loaddata example.json
 
 To play about with it, go to http://127.0.0.1:8000/
 Use the following:
