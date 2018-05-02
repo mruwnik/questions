@@ -19,17 +19,18 @@ class Category(models.Model):
 
     @property
     def path(self):
-        """Return the printable path to this category."""
-        current = []
+        """Return the path to this category."""
         parent = self.parent
+        current = []
         while parent and parent.title:
-            current.append(parent.title)
+            current.append(parent)
             parent = parent.parent
 
-        return self.question.content + ': ' + ' -> '.join(current)
+        return current
 
     def __str__(self):
-        return '%s (%s)' % (self.title, self.path)
+        path = '->'.join(item.title for item in self.path)
+        return '%s (%s)' % (self.title, path)
 
 
 class Answer(models.Model):

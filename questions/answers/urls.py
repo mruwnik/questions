@@ -16,14 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from answers.views import questions, category, categories, answer
+from answers.views import questions, categories, answer
 
 urlpatterns = [
-    path('all', questions, name='questions_list'),
-    path('filter/<search>/', questions, name='questions_filter'),
-
-    path('<int:question_id>/', categories, name='categories'),
-    path('<int:question_id>/category/<int:parent>', category, name='category'),
-
-    path('answer/<int:answer_id>', answer, name='answer'),
+    path('', questions, name='bare_questions'),
+    path('<int:question_id>/', categories, name='selected_question'),
+    path('<int:question_id>/<int:category_id>', categories, name='selected_category'),
+    path('answer/<int:question_id>/<int:category_id>/<int:answer_id>', answer, name='selected_answer'),
 ]

@@ -1,0 +1,34 @@
+{% extends "answers/base.html" %}
+{% load answers_filters %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'selected_question' selected.id %}" class="question-crumb">{{ selected.content }}</a>
+    {% for item in parent.path %}
+            <a href="{% url 'selected_category' selected.id item.id %}" class="category-crumb">{{ item.title }}</a>
+    {% endfor %}
+    {% if parent %}
+            <a href="{% url 'selected_category' selected.id parent.id %}" class="current">{{ parent.title }}</a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="answer">
+    <h1 class="title">{{ answer.title }}</div>
+    <div class="answer-content">
+         {{ answer.content | safe }}
+    </div>
+
+    {% if answer.sources.count %}
+        <ul class="sources-list">
+            <div class="sources-title">Sources</div>
+        {% for source in answer.sources.all %}
+            <li id="{{ source.id }}" class="source" >
+                <a href="{{ source.url }}">{{ source.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

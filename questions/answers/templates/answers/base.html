@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+{% load answers_filters %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'answers.css' %}" />
+    <title> {% block title %} {{ parent | print_path }} {% endblock %} </title>
+</head>
+
+<body>
+    <div class="sidebar">
+        {% block sidebar %}
+        Questions:
+        <ul class="questions-list">
+            {% for question in questions.all %}
+                <li id="{{ question.id }}" class="question{% if question.id == selected.id %} selected{% endif %}" >
+                    <a href="{% url 'selected_question' question.id %}">{{ question.content }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div class="content">
+        {% block breadcrumbs %} {% endblock %}
+
+        {% block content %}
+        <div>This is where a description of what the site is for goes</div>
+        {% endblock %}
+    </div>
+</body>
